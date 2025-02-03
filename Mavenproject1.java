@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package recursividade.mavenproject1;
 
 import java.util.Scanner;
@@ -21,21 +17,49 @@ public class Mavenproject1 {
             opcao = leitor.nextInt();
             
             switch(opcao) {
-                case 1: System.out.println("Informe o limite");
+                case 1: 
+                System.out.println("Informe o limite: ");
                 int limite = leitor.nextInt();
                 System.out.println("Resultado: " + somaPares(limite));
-                
-                case 2: System.out.println("Informe o tamanho do vetor");
+                break;
+
+                case 2: 
+                System.out.println("Informe o tamanho do vetor: ");
                 int tamanhoVetor = leitor.nextInt();
                 double vetor[] = new double[tamanhoVetor];
+
+                System.out.println("Digite os elementos do vetor: ");
                 for(int j = 0; j < tamanhoVetor; j++){
                     vetor[j] = leitor.nextDouble();
                 }
                 System.out.println("Resultado: " + somarElementos(vetor, 0));
-                
-                
+                break;
+
+                case 3:
+                System.out.println("Informe o tamanho do vetor: ");
+                int tamanho = leitor.nextInt();
+                int vetorInt[] = new int[tamanho];
+
+                System.out.println("Digite os elementos do vetor: ");
+                for(int j = 0; j < tamanho; j++) {
+                    vetorInt[j] = leitor.nextInt();
+                }
+
+                System.out.println("Digite o numero a ser contado: ");
+                int num = leitor .nextInt();
+                System.out.println("O número " + num + " aparece " + contarRepeticoes(vetorInt, num, 0) + " vezes.");
+                break;
+
+                case 4:
+                    System.out.println("Encerrando o programa...");
+                    break;
+
+                default:
+                    System.out.println("Opção inválida! Tente novamente.");
+
             }
         }while(opcao == 4);
+
         leitor.close();
     }
     
@@ -60,6 +84,12 @@ public class Mavenproject1 {
         }
     }
     
+    public static int contarRepeticoes(int[] v, int num, int i) {
+        if (i == v.length) {
+            return 0;
+        }
+        return (v[i] == num ? 1 : 0) + contarRepeticoes(v, num, i + 1);
+    }
+
  
 }
-
